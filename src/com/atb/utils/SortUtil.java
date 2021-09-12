@@ -2,6 +2,12 @@ package com.atb.utils;
 
 import java.util.Random;
 
+/**
+ * 稳定性 插入排序和归并排序是稳定的
+ * p218有几个排序的总结
+ * Array.sort对原始数据类型用三项切分快速排序 对引用数据类型用归并排序
+ * Kendall距离
+ */
 public class SortUtil {
     public static Integer[] createArray(){
         Integer[] a=new Integer[15];
@@ -9,6 +15,16 @@ public class SortUtil {
         for(int i=0;i<a.length;i++){
             a[i]=r.nextInt(100);
         }
+        return a;
+    }
+
+    public static Integer[] createHeapArray() {
+        Integer[] a = new Integer[15];
+        Random r = new Random();
+        for (int i = 0; i < a.length; i++) {
+            a[i] = r.nextInt(100);
+        }
+        a[0]=0;//第一个元素不管
         return a;
     }
 
