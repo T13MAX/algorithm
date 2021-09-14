@@ -1,10 +1,14 @@
 package com.atb.search;
 
 /**
+ * 基于无序链表的顺序查找
+ *
+ * 没测过以书为准
+ *
  * @Author 呆呆
  * @Datetime 2021/9/13 22:23
  */
-public class SequentialSearchST<K, V> {
+public class SequentialSearch<K, V> {
     private Node first;
 
     private class Node {

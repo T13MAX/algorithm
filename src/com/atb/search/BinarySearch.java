@@ -7,15 +7,18 @@ import java.util.Queue;
 /**
  * 二分查找
  * 最多lgN+1次比较
+ *
+ * 没测过以书为准
+ *
  * @Author 呆呆
  * @Datetime 2021/9/13 22:40
  */
-public class BinarySearchST<K extends Comparable, V> {
+public class BinarySearch<K extends Comparable, V> {
     private K[] keys;
     private V[] values;
     private int N;
 
-    public BinarySearchST(int capacity) {
+    public BinarySearch(int capacity) {
         keys = (K[]) new Comparable[capacity];//调整数组大小的标准代码在1.1节 我估计就是添加的时候不够了就乘2 删除了少于一半就减小之类的
         values = (V[]) new Object[capacity];
     }
