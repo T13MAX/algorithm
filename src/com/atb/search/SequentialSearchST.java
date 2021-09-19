@@ -3,12 +3,11 @@ package com.atb.search;
 /**
  * 基于无序链表的顺序查找
  *
- * 没测过以书为准
  *
  * @Author 呆呆
  * @Datetime 2021/9/13 22:23
  */
-public class SequentialSearch<K, V> {
+public class SequentialSearchST<K, V> {
     private Node first;
 
     private class Node {
@@ -23,7 +22,7 @@ public class SequentialSearch<K, V> {
         }
     }
 
-    public V getValue(K key) {
+    public V get(K key) {
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)){
                 return x.value;
