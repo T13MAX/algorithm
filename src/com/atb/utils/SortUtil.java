@@ -3,6 +3,7 @@ package com.atb.utils;
 import java.util.Random;
 
 /**
+ * 为什么不继承呢?
  * 稳定性 插入排序和归并排序是稳定的
  * p218有几个排序的总结
  * Array.sort对原始数据类型用三项切分快速排序 对引用数据类型用归并排序
