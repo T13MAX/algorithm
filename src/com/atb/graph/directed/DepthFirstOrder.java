@@ -1,5 +1,6 @@
 package com.atb.graph.directed;
 
+import com.atb.graph.sp.EdgeWeightedDigraph;
 import com.atb.graph.undirected.Graph;
 
 import java.util.LinkedList;
@@ -25,6 +26,17 @@ public class DepthFirstOrder {
         for (int v = 0; v < G.V(); v++) {
             if (!marked[v]) dfs(G, v);
         }
+    }
+
+    public DepthFirstOrder(EdgeWeightedDigraph G) {
+        System.out.println("DepthFirstOrder构造方法没写");
+        /*pre = new int[G.V()];
+        post = new int[G.V()];
+        postorder = new Queue<Integer>();
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
+        for (int v = 0; v < G.V(); v++)
+            if (!marked[v]) dfs(G, v);*/
     }
 
     private void dfs(Digraph G, int v) {

@@ -1,6 +1,9 @@
 package com.atb.graph.directed;
 
 
+import com.atb.graph.sp.EdgeWeightedDigraph;
+import com.atb.graph.sp.EdgeWeightedDirectedCycle;
+
 /**
  * 拓扑排序
  * 拓扑排序就是逆后续排列
@@ -20,6 +23,14 @@ public class Topological {
         }
     }
 
+    public Topological(EdgeWeightedDigraph G) {
+        EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(G);
+        if (!finder.hasCycle()) {
+            DepthFirstOrder dfs = new DepthFirstOrder(G);
+            order = dfs.reversePost();
+        }
+    }
+
     public Iterable<Integer> order() {
         return order;
     }
@@ -27,4 +38,9 @@ public class Topological {
     public boolean isDAG() {
         return order != null;
     }
+
+    public boolean hasOrder() {
+        return order != null;
+    }
+
 }

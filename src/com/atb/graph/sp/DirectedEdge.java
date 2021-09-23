@@ -1,18 +1,18 @@
-package com.atb.graph.tree;
+package com.atb.graph.sp;
 
 /**
- * 带权重的边
+ * 加权有向边
  *
  * @Author 呆呆
  * @Datetime 2021/9/21 19:11
  */
-public class Edge implements Comparable<Edge> {
+public class DirectedEdge implements Comparable<DirectedEdge> {
 
-    private final int v;//顶点之一
-    private final int w;//另一个顶点
+    private final int v;//起点
+    private final int w;//终点
     private final double weight;//边的权重
 
-    public Edge(int v, int w, double weight) {
+    public DirectedEdge(int v, int w, double weight) {
         this.v = v;
         this.w = w;
         this.weight = weight;
@@ -22,20 +22,16 @@ public class Edge implements Comparable<Edge> {
         return weight;
     }
 
-    public int either() {
+    public int from() {
         return v;
     }
 
-    public int other(int vertex) {//传一个顶点 给出另一个顶点
-        if (vertex == v) return w;
-        else if (vertex == w) return v;
-        else {
-            throw new RuntimeException("Inconsistent edge");
-        }
+    public int to() {
+        return w;
     }
 
     @Override
-    public int compareTo(Edge that) {//比较权重
+    public int compareTo(DirectedEdge that) {//比较权重
         if (this.weight() < that.weight()) return -1;
         else if (this.weight() > that.weight()) return +1;
         else {
