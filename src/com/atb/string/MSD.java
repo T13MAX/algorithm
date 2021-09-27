@@ -6,6 +6,9 @@ import java.nio.file.ClosedWatchServiceException;
 
 /**
  * 高位优先的字符串排序
+ * 平均需要检查NlogN
+ * --------------R
+ * 访问数组次数为8N+3R到7wN+3wR之间 w是字符串的平均长度
  *
  * @Author 呆呆
  * @Datetime 2021/9/26 22:56
@@ -15,7 +18,7 @@ public class MSD {
     private static final int M = 15;
     private static String[] aux;
 
-    private static int charAt(String s, int d) {
+    private static int charAt(String s, int d) {//校验是否越界
         if (d < s.length()) return s.charAt(d);
         else return -1;
     }
@@ -26,9 +29,9 @@ public class MSD {
         sort(a, 0, N - 1, 0);
     }
 
-    private static void sort(String[] a, int lo, int hi, Integer d) {
+    private static void sort(String[] a, int lo, int hi, Integer d) {//第d个字符 从第0个开始
         if (hi < lo + M) {
-            //Insertion.sort(a,lo,hi,d); return;
+            //Insertion.sort(a,lo,hi,d); return;//小数组直接来插入排序
         }
         int[] count = new int[R + 2];
         for (int i = lo; i <= hi; i++) {
