@@ -4,6 +4,8 @@ import com.atb.utils.Queue;
 
 /**
  * 基于单词查找树的符号表
+ * 未命中查找为log R底 N
+ * 链接总数在RN~RNw之间
  *
  * @Author 呆呆
  * @Datetime 2021/9/28 22:23
