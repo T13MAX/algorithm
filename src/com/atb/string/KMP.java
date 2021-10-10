@@ -35,6 +35,17 @@ public class KMP {
         else return N;          //未找到匹配
     }
 
+    public static void main(String[] args) {
+        KMP kmp=new KMP("NEEDLE");
+        System.out.println("正确答案为"+"HFUIASHNEESDLEDFNEEDDLEA".length());
+        System.out.println("---------------------------");
+        System.out.println("KMP算法匹配的位置为"+kmp.search("HFUIASHNEESDLEDFNEEDDLEANEEDLEPOIJFLKSLDJ"));
+        System.out.println("---------------------------");
+        System.out.println("暴力子字符串查找的位置为"+violenceSearch("NEEDLE","HFUIASHNEESDLEDFNEEDDLEANEEDLEPOIJFLKSLDJ"));
+        System.out.println("---------------------------");
+        System.out.println("显示回退暴力子字符串查找的位置为"+violenceSearch_666("NEEDLE","HFUIASHNEESDLEDFNEEDDLEANEEDLEPOIJFLKSLDJ"));
+    }
+
     //暴力子字符串查找
     public static int violenceSearch(String pat, String txt) {
         int M = pat.length();
