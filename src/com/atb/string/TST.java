@@ -10,7 +10,7 @@ package com.atb.string;
 public class TST<V> {
     private Node root;
 
-    private class Node {
+    private class Node<V> {
         char c;
         Node left, mid, right;
         V val;
@@ -46,5 +46,26 @@ public class TST<V> {
         else if (d < key.length() - 1) x.mid = put(x.mid, key, val, d + 1);
         else x.val = val;
         return x;
+    }
+
+    public String longestPrefixOf(String query) {
+        if (query == null) {
+            throw new IllegalArgumentException("calls longestPrefixOf() with null argument");
+        }
+        if (query.length() == 0) return null;
+        int length = 0;
+        Node<V> x = root;
+        int i = 0;
+        while (x != null && i < query.length()) {
+            char c = query.charAt(i);
+            if (c < x.c) x = x.left;
+            else if (c > x.c) x = x.right;
+            else {
+                i++;
+                if (x.val != null) length = i;
+                x = x.mid;
+            }
+        }
+        return query.substring(0, length);
     }
 }
