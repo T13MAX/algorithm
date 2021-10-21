@@ -11,16 +11,16 @@ import com.atb.utils.In;
  * @Datetime 2021/9/20 13:02
  */
 public class Graph {
-    private final int V;//顶点数目
+    private final int V;//顶点数目 vertices
     private int E;//边数目
     private Bag<Integer>[] adj;//里面是一个链表 记录的是所有和他相连的边 链表的的顺序没任何关系 只是加入顺序
 
     public Graph(int V) {
         this.V = V;
         this.E = 0;
-        this.adj = (Bag<Integer>[]) new Object[V];
+        this.adj = (Bag<Integer>[]) new Object[V];//和某顶点相邻的所有顶点
         for (int v = 0; v < V; v++) {
-            adj[v] = new Bag<Integer>();
+            adj[v] = new Bag<Integer>();//和某顶点相邻的所有顶点
         }
     }
 

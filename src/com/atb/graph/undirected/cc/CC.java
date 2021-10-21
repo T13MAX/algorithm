@@ -6,18 +6,19 @@ import com.atb.graph.undirected.Graph;
  * 连通分量
  * 需要对图进行预处理
  * 而union-find在 要判断连通性或大量连通性和插入混合时
+ *
  * @Author 呆呆
  * @Datetime 2021/9/20 20:58
  */
 public class CC {
     private boolean[] marked;
-    private int[] id;
+    private int[] id;//就你麻痹记录的是不是在一个相连的图里面比如都是0的在一起 都是1的在一起 2的在一起 看p351也一目了然 喵了个咪的
     private int count;
 
     public CC(Graph G) {
         marked = new boolean[G.V()];
         id = new int[G.V()];
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.V(); i++) {//所有顶点都来一次深度优先遍历
             if (!marked[i]) {
                 dfs(G, i);
                 count++;
