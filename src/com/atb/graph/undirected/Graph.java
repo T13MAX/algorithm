@@ -42,7 +42,7 @@ public class Graph {
         return E;
     }
 
-    public void addEdge(int v, int w) {
+    public void addEdge(int v, int w) {//添加边 所以不存在重复的问题 一条边只会被添加一次 不是顶点
         adj[v].add(w);
         adj[w].add(v);
         E++;

@@ -10,7 +10,7 @@ import java.util.Stack;
  */
 public class DepthFirstPaths {
     private boolean[] marked;
-    private int[] edgeTo;
+    private int[] edgeTo;//某个节点的上一节点
     private final int s;
 
     public DepthFirstPaths(Graph G, int s) {
@@ -37,10 +37,10 @@ public class DepthFirstPaths {
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<>();
-        for (int x = v; x != s; x = edgeTo[x]) {//每次都是此顶点的上一个顶点
+        for (int x = v; x != s; x = edgeTo[x]) {//每次都是此顶点的上一个顶点 x!=s用于判断跳出循环
             path.push(x);
         }
-        path.push(s);//最后是头
+        path.push(s);//最后是头 上面用于判断跳出 所以这里加一下头结点
         return path;
     }
 }
