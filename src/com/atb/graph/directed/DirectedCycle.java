@@ -1,8 +1,7 @@
 package com.atb.graph.directed;
 
-import com.atb.graph.undirected.Graph;
 
-import java.util.Stack;
+import com.atb.utils.Stack;
 
 /**
  * 寻找有向环
@@ -20,7 +19,7 @@ public class DirectedCycle {
         marked = new boolean[G.V()];
         onStack = new boolean[G.V()];
         edgeTo = new int[G.V()];
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.V(); i++) {//找有向环 所以是从每个起点都出发试一下
             if (!marked[i]) dfs(G, i);
         }
     }
@@ -31,19 +30,19 @@ public class DirectedCycle {
         for (int w : G.adj(v)) {//此顶点的所有连接的顶点返回 进行遍历
             if (this.hasCycle()) {//有环return
                 return;
-            } else if (!marked[w]) {//每个顶点在递归
-                edgeTo[w] = v;
-                dfs(G, w);
+            } else if (!marked[w]) {//每个顶点在递归 没被标记过 第一次到
+                edgeTo[w] = v;//记录此顶点的上一个顶点
+                dfs(G, w);//继续递归
             } else if (onStack[w]) {//被标记过 而且还在环栈里
                 cycle = new Stack<>();
-                for (int x = v; x != w; x = edgeTo[x]) {
+                for (int x = v; x != w; x = edgeTo[x]) {//w用于判断跳出循环
                     cycle.push(x);
                 }
                 cycle.push(w);//插入最后一个
-                cycle.push(v);//回到v
+                cycle.push(v);//一圈回到v
             }
-            onStack[v] = false;
         }
+        onStack[v] = false;
     }
 
     public boolean hasCycle() {

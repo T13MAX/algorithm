@@ -1,6 +1,7 @@
 package com.atb.graph.tree;
 
 import com.atb.pq.IndexMaxPQ;
+import com.atb.utils.IndexMinPQ;
 
 /**
  * Prim算法的即时实现
@@ -13,7 +14,7 @@ public class PrimMST {
     private Edge[] edgeTo;//距离树最近的边
     private double[] distTo;//权重
     private boolean[] marked;//v在树种则为true
-    private IndexMaxPQ<Double> pq;
+    private IndexMinPQ<Double> pq;
 
     public PrimMST(EdgeWeightedGraph G) {
         edgeTo = new Edge[G.V()];
@@ -22,7 +23,7 @@ public class PrimMST {
         for (int v = 0; v < G.V(); v++) {
             distTo[v] = Double.POSITIVE_INFINITY;
         }
-        pq = new IndexMaxPQ<>(G.V());
+        pq = new IndexMinPQ<>(G.V());
         distTo[0] = 0.0;
         pq.insert(0, 0.0);
         while (!pq.isEmpty()) {
@@ -43,5 +44,9 @@ public class PrimMST {
                 else pq.insert(w, distTo[w]);
             }
         }
+    }
+
+    public Edge[] getEdge() {
+        return edgeTo;
     }
 }

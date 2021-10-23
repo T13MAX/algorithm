@@ -1,6 +1,4 @@
-package com.atb.pq;
-
-import com.atb.utils.StdOut;
+package com.atb.utils;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

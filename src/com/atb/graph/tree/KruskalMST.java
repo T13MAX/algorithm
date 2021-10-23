@@ -1,6 +1,7 @@
 package com.atb.graph.tree;
 
 import com.atb.utils.MinPQ;
+import com.atb.utils.Queue;
 import com.atb.utils.UF;
 
 import java.util.Iterator;
@@ -13,10 +14,10 @@ import java.util.LinkedList;
  * @Datetime 2021/9/22 23:34
  */
 public class KruskalMST {
-    private LinkedList<Edge> mst;
+    private Queue<Edge> mst;
 
     public KruskalMST(EdgeWeightedGraph G) {
-        mst = new LinkedList<>();
+        mst = new Queue<>();
         MinPQ<Edge> pq = new MinPQ<>();
         for (Edge e : G.edges()) pq.insert(e);
         UF uf = new UF(G.V());
@@ -25,7 +26,7 @@ public class KruskalMST {
             int v=e.either(),w=e.other(v);
             if(uf.connected(v,w)) continue;
             uf.union(v,w);
-            mst.addLast(e);
+            mst.enqueue(e);
         }
     }
 

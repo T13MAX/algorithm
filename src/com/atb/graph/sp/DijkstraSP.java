@@ -1,8 +1,7 @@
 package com.atb.graph.sp;
 
-import com.atb.pq.IndexMinPQ;
+import com.atb.utils.IndexMinPQ;
 
-import java.util.Iterator;
 import java.util.Stack;
 
 /**

@@ -4,10 +4,10 @@ import com.atb.utils.BinaryStdIn;
 import com.atb.utils.BinaryStdOut;
 import com.atb.utils.MinPQ;
 
-import java.util.Random;
 
 /**
  * 霍夫曼压缩
+ * 都没测
  *
  * @Author 呆呆
  * @Datetime 2021/10/13 22:59

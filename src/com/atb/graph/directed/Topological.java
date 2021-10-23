@@ -8,6 +8,8 @@ import com.atb.graph.sp.EdgeWeightedDirectedCycle;
  * 拓扑排序
  * 拓扑排序就是逆后续排列
  * 所需时间和V+E成正比
+ * 任务调度 完成一些活有可能需要有前提 需要先完成其他的东西
+ * 后序 因为后完成的要先被记录下来 逆 因为最终的顺序是倒过来的
  *
  * @Author 呆呆
  * @Datetime 2021/9/21 13:20

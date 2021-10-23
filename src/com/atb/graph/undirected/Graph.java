@@ -51,4 +51,15 @@ public class Graph {
     public Iterable<Integer> adj(int v) {
         return adj[v];
     }
+
+    public static Graph createGraph(){
+        Graph graph=new Graph(6);
+        graph.addEdge(0,5);
+        graph.addEdge(0,1);
+        graph.addEdge(0,2);
+        graph.addEdge(2,3);
+        graph.addEdge(3,5);
+        graph.addEdge(3,4);
+        return graph;
+    }
 }
