@@ -4,6 +4,7 @@ import com.atb.utils.StdIn;
 import com.atb.utils.StdOut;
 
 /**
+ *
  * @Author 呆呆
  * @Datetime 2021/9/23 23:25
  */
@@ -11,22 +12,10 @@ public class CPM {
     private CPM() {
     }
 
-    /**
-     * Reads the precedence constraints from standard input
-     * and prints a feasible schedule to standard output.
-     *
-     * @param args the command-line arguments
-     */
     public static void main(String[] args) {
-
-        // number of jobs
         int n = StdIn.readInt();
-
-        // source and sink
         int source = 2 * n;
         int sink = 2 * n + 1;
-
-        // build network
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(2 * n + 2);
         for (int i = 0; i < n; i++) {
             double duration = StdIn.readDouble();

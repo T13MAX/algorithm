@@ -30,9 +30,9 @@ public class DepthFirstOrder {
     }
 
     public DepthFirstOrder(EdgeWeightedDigraph G) {
-        System.out.println("DepthFirstOrder构造方法没写");
         pre = new Queue<>();
         post = new Queue<>();
+        reversePost = new Stack<>();
         marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
@@ -58,6 +58,7 @@ public class DepthFirstOrder {
             }
         }
         post.enqueue(v);
+        reversePost.push(v);
     }
 
 

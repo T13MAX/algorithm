@@ -14,14 +14,14 @@ public class AcyclicSP {
     private DirectedEdge[] edgeTo;
     private double[] distTo;
 
-    public AcyclicSP(EdgeWeightedDigraph G, int s) {
+    public AcyclicSP(EdgeWeightedDigraph G) {
         edgeTo = new DirectedEdge[G.V()];
         distTo = new double[G.V()];
         for (int v = 0; v < G.V(); v++) {
             distTo[v] = Double.POSITIVE_INFINITY;//所有赋值为正无穷
         }
-        distTo[s] = 0.0;//起点为0.0
         Topological top = new Topological(G);
+        distTo[top.order().iterator().next()] = 0.0;//起点为0.0
         for (int v : top.order()) {
             relax(G, v);
         }

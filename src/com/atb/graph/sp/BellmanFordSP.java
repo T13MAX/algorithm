@@ -4,23 +4,22 @@ import com.atb.utils.In;
 import com.atb.utils.Queue;
 import com.atb.utils.StdOut;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
  * 基于队列的BellmanFord算法
- *
+ * 不是特别懂 哎
  * @Author 呆呆
  * @Datetime 2021/9/24 22:17
  */
 public class BellmanFordSP {
     private static final double EPSILON = 1E-14;
-    private double[] distTo;
-    private DirectedEdge[] edgeTo;
-    boolean[] onQ;
-    private Queue<Integer> queue;
-    private int cost;
-    private Iterable<DirectedEdge> cycle;
+    private double[] distTo;//到起点的权重
+    private DirectedEdge[] edgeTo;//上一
+    boolean[] onQ;//是否在队列中
+    private Queue<Integer> queue;//队列
+    private int cost;//relax的调用次数
+    private Iterable<DirectedEdge> cycle;//是否有负权重的环
 
     public BellmanFordSP(EdgeWeightedDigraph G, int s) {
         distTo = new double[G.V()];
@@ -31,8 +30,8 @@ public class BellmanFordSP {
             distTo[v] = Double.POSITIVE_INFINITY;
         }
         distTo[s] = 0.0;
-        queue.enqueue(s);
-        onQ[s] = true;
+        queue.enqueue(s);//入队
+        onQ[s] = true;//在队列中
         while (!queue.isEmpty() && !hasNegativeCycle()) {
             int v = queue.dequeue();
             onQ[v] = false;
@@ -46,14 +45,14 @@ public class BellmanFordSP {
             if (distTo[w] > distTo[v] + e.weight() + EPSILON) {
                 distTo[w] = distTo[v] + e.weight();
                 edgeTo[w] = e;
-                if (!onQ[w]) {
+                if (!onQ[w]) {//不在就加进去
                     queue.enqueue(w);
-                    onQ[w] = true;
+                    onQ[w] = true;//在队列里了
                 }
             }
-            if (++cost % G.V() == 0) {
+            if (cost++ % G.V() == 0) {
                 findNegativeCycle();
-                if (hasNegativeCycle()) return;  // found a negative cycle
+                if (hasNegativeCycle()) return;  //负权重环
             }
         }
     }
@@ -214,38 +213,4 @@ public class BellmanFordSP {
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
-    /**
-     * Unit tests the {@code BellmanFordSP} data type.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        In in = new In(args[0]);
-        int s = Integer.parseInt(args[1]);
-        EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-
-        BellmanFordSP sp = new BellmanFordSP(G, s);
-
-        // print negative cycle
-        if (sp.hasNegativeCycle()) {
-            for (DirectedEdge e : sp.negativeCycle())
-                StdOut.println(e);
-        }
-
-        // print shortest paths
-        else {
-            for (int v = 0; v < G.V(); v++) {
-                if (sp.hasPathTo(v)) {
-                    StdOut.printf("%d to %d (%5.2f)  ", s, v, sp.distTo(v));
-                    for (DirectedEdge e : sp.pathTo(v)) {
-                        StdOut.print(e + "   ");
-                    }
-                    StdOut.println();
-                } else {
-                    StdOut.printf("%d to %d           no path\n", s, v);
-                }
-            }
-        }
-
-    }
 }
