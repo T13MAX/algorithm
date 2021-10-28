@@ -30,9 +30,10 @@ public class MSD {
     }
 
     private static void sort(String[] a, int lo, int hi, Integer d) {//第d个字符 从第0个开始
-        if (hi < lo + M) {
-            //Insertion.sort(a,lo,hi,d); return;//小数组直接来插入排序
-        }
+        /*if (hi < lo + M) {
+            Insertion.sort(a,lo,hi,d); return;//小数组直接来插入排序
+        }*/
+        if (lo > hi) return;
         int[] count = new int[R + 2];
         for (int i = lo; i <= hi; i++) {
             count[charAt(a[i], d) + 2]++;
@@ -46,8 +47,36 @@ public class MSD {
         for (int i = lo; i <= hi; i++) {
             a[i] = aux[i - lo];
         }
-        for (int r = 0; r < R; r++) {
+        for (int r = 0; r < R; r++) {//对每个字符都试一下 相同的要在接着排比较下一位
             sort(a, lo + count[r], lo + count[r + 1] - 1, d + 1);
         }
+    }
+
+    public static void main(String[] args) {
+        String[] a = strs();
+        sort(a);
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+
+    public static String[] strs() {
+        String[] result = {
+                "she",
+                "sells",
+                "seashells",
+                "by",
+                "the",
+                "sea",
+                "shore",
+                "the",
+                "shells",
+                "she",
+                "sells",
+                "are",
+                "surely",
+                "seashells",
+        };
+        return result;
     }
 }
