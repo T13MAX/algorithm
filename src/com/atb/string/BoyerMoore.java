@@ -2,6 +2,7 @@ package com.atb.string;
 
 /**
  * N/M次比较
+ * 倒着匹配 速度更快
  *
  * @Author 呆呆
  * @Datetime 2021/10/10 19:09
@@ -29,8 +30,8 @@ public class BoyerMoore {
         int skip;
         for (int i = 0; i <= N - M; i += skip) {
             skip = 0;
-            for (int j = M - 1; j >= 0; j--) {
-                if (pat.charAt(j) != txt.charAt(i + j)) {
+            for (int j = M - 1; j >= 0; j--) {//倒着来
+                if (pat.charAt(j) != txt.charAt(i + j)) {//不相等 直接跳
                     skip = j - right[txt.charAt(i + j)];
                     if (skip < 1) skip = 1;
                     break;
@@ -44,6 +45,6 @@ public class BoyerMoore {
     public static void main(String[] args) {
         BoyerMoore boyerMoore = new BoyerMoore("NEEDLE");
         int i = boyerMoore.search("HFUIASHNEESDLEDFNEEDDLEANEEDLEPOIJFLKSLDJ");
-        System.out.println("匹配的位置为"+i);
+        System.out.println("匹配的位置为" + i);
     }
 }
