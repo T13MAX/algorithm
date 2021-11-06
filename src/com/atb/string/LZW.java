@@ -41,11 +41,11 @@ public class LZW {
             st[i] = "" + (char) i;
         }
         st[i++] = "";
-        int codeword = BinaryStdIn.readInt(W);
-        String val = st[codeword];
+        int codeword = BinaryStdIn.readInt(W);//取一个数字 第一个字符 'A'
+        String val = st[codeword];//在字符串数组里找到
         while (true) {
             BinaryStdOut.write(val);
-            codeword = BinaryStdIn.readInt(W);
+            codeword = BinaryStdIn.readInt(W);//已经是第 "二" 字符了 'B'
             if (codeword == R) {
                 break;
             }
@@ -54,7 +54,7 @@ public class LZW {
                 s = val + val.charAt(0);
             }
             if (i < L) {
-                st[i++] = val + s.charAt(0);
+                st[i++] = val + s.charAt(0);//把"AB"加进去了
             }
             val = s;
         }

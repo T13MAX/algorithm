@@ -14,9 +14,9 @@ import java.util.Stack;
  * @Datetime 2021/10/11 23:06
  */
 public class NFA {
-    private char[] re;
-    private Digraph G;
-    private int M;
+    private char[] re;//匹配转换
+    private Digraph G;//epsilon转换
+    private int M;//状态数量
 
     public NFA(String regexp) {
         Stack<Integer> ops = new Stack<>();
@@ -32,7 +32,7 @@ public class NFA {
                 if (re[or] == '|') {//是或者 那就是或者的下一位到右括号
                     lp = ops.pop();//再出一栈 左括号
                     G.addEdge(lp, or + 1);//左括号到或+1
-                    G.addEdge(or, i);//或到i+1
+                    G.addEdge(or, i);//或到i
                 } else {
                     lp = or;//没有或 那左括号就是右括号出栈对应左括号
                 }
@@ -57,22 +57,22 @@ public class NFA {
         Bag<Integer> pc = new Bag<>();
         DirectedDFS dfs = new DirectedDFS(G, 0);//有向图可达
         for (int v = 0; v < G.V(); v++) {
-            if (dfs.marked(v)) pc.add(v);
+            if (dfs.marked(v)) pc.add(v);//pc记录的是起点0开始的可达性
         }
-        for (int i = 0; i < txt.length(); i++) {
+        for (int i = 0; i < txt.length(); i++) {//循环遍历每个字符都是在这个有向图中是可达的
             Bag<Integer> match = new Bag<>();
             for (int v : pc) {
                 if (v < M)
-                    if (re[v] == txt.charAt(i) || re[v] == '.')
-                        match.add(v + 1);
+                    if (re[v] == txt.charAt(i) || re[v] == '.')//'.'是任意字符
+                        match.add(v + 1);//看看pc里的点和要匹配的字符串能不能对上
             }
             pc = new Bag<>();
-            dfs = new DirectedDFS(G, match);
+            dfs = new DirectedDFS(G, match);//多个顶点为起点的可达性
             for (int v = 0; v < G.V(); v++) {
                 if (dfs.marked(v)) pc.add(v);
             }
         }
-        for (int v : pc) {
+        for (int v : pc) {//上面是看看能到哪 这是看看符不符合
             if (v == M) return true;//检查v有没有符合的
         }
         return false;

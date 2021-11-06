@@ -7,6 +7,7 @@ import com.atb.utils.BinaryStdOut;
 /**
  * DNA的压缩和展开
  * DNA都是ACTG碱基
+ * (没测过)
  *
  * @Author 呆呆
  * @Datetime 2021/10/12 22:36

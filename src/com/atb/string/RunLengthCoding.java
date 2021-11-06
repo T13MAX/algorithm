@@ -5,6 +5,7 @@ import com.atb.utils.BinaryStdOut;
 
 /**
  * 游程编码
+ * (没测过)
  *
  * @Author 呆呆
  * @Datetime 2021/10/12 23:09
@@ -17,8 +18,8 @@ public class RunLengthCoding {
             char cnt = BinaryStdIn.readChar();
             for (int i = 0; i < cnt; i++) {//记录多少次 就写多少个
                 BinaryStdOut.write(b);
-                b = !b;
             }
+            b = !b;
         }
         BinaryStdOut.close();
     }
@@ -33,7 +34,7 @@ public class RunLengthCoding {
                 cnt = 0;//清零
                 old = !old;//变另一个了
             } else {
-                if (cnt == 255) {//一行全是0
+                if (cnt == 255) {
                     BinaryStdOut.write(cnt);
                     cnt = 0;
                     BinaryStdOut.write(cnt);
