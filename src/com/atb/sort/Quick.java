@@ -33,7 +33,7 @@ public class Quick {
 
     private static  int partition(Comparable[] a,int lo,int hi){
         int i=lo,j=hi+1;
-        Comparable v=a[lo];
+        Comparable v=a[lo];//最小
         while(true){
             while(SortUtil.less(a[++i],v)) if(i==hi) break; //冗余
             while(SortUtil.less(v,a[--j])) if(j==lo) break;
