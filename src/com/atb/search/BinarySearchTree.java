@@ -57,7 +57,7 @@ public class BinarySearchTree<K extends Comparable, V> {
         root = put(root, key, value);
     }
 
-    public Node put(Node root, K key, V value) {
+    private Node put(Node root, K key, V value) {
         if (root == null) return new Node(key, value, 1);//空树 创建一个节点 当做根节点
         int cmp = key.compareTo(root.key);
         if (cmp < 0) root.left = put(root.left, key, value);

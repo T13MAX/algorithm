@@ -178,9 +178,9 @@ public class RedBlackBinarySearchTree<K extends Comparable, V> {
     }
 
     public void deleteMin() {
-        if (!isRed(root.left) && !isRed(root.right)) root.color = RED;
+        if (!isRed(root.left) && !isRed(root.right)) root.color = RED;//在根节点 直接变成3-节点
         root = deleteMin(root);
-        if (!isEmpty()) root.color = BLACK;
+        if (!isEmpty()) root.color = BLACK;//最终要还原
     }
 
     private Node deleteMin(Node h) {
