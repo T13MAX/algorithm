@@ -30,7 +30,7 @@ public class LZW {
             }
             input = input.substring(t);//从输入中读取s    substring是从第几位开始 前面不要了!!!
         }
-        BinaryStdOut.write(R, W);
+        BinaryStdOut.write(R, W);//R是80 保留的结束编码 W是编码宽度
         BinaryStdOut.close();
     }
 
@@ -40,17 +40,17 @@ public class LZW {
         for (i = 0; i < R; i++) {
             st[i] = "" + (char) i;
         }
-        st[i++] = "";
+        st[i++] = "";//R是结束编码
         int codeword = BinaryStdIn.readInt(W);//取一个数字 第一个字符 'A'
         String val = st[codeword];//在字符串数组里找到
         while (true) {
             BinaryStdOut.write(val);
             codeword = BinaryStdIn.readInt(W);//已经是第 "二" 字符了 'B'
-            if (codeword == R) {
+            if (codeword == R) {//结束编码
                 break;
             }
             String s = st[codeword];
-            if (i == codeword) {
+            if (i == codeword) {//特殊情况 要加的那个刚好是刚读到的
                 s = val + val.charAt(0);
             }
             if (i < L) {
