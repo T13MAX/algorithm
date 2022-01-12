@@ -31,7 +31,7 @@ public class BoyerMoore {
         for (int i = 0; i <= N - M; i += skip) {
             skip = 0;
             for (int j = M - 1; j >= 0; j--) {//倒着来
-                if (pat.charAt(j) != txt.charAt(i + j)) {//不相等 直接跳
+                if (pat.charAt(j) != txt.charAt(i + j)) {//不相等 准备跳
                     skip = j - right[txt.charAt(i + j)];
                     if (skip < 1) skip = 1;
                     break;

@@ -10,12 +10,12 @@ import java.util.Random;
  * @Datetime 2021/10/10 20:06
  */
 public class RabinKarp {
-    private String pat;
-    private long patHash;
-    private int M;
-    private long Q;
-    private int R = 256;
-    private long RM;
+    private String pat;     //模式串
+    private long patHash;   //模式串的hash
+    private int M;          //模式串的长度
+    private long Q;         //一个很大的素数
+    private int R = 256;    //进制
+    private long RM;        //
 
     public RabinKarp(String pat) {
         this.pat = pat;
@@ -37,7 +37,7 @@ public class RabinKarp {
     private long hash(String key, int M) {
         long h = 0;
         for (int j = 0; j < M; j++) {
-            h = (R * h + key.charAt(j)) % Q;
+            h = (R * h + key.charAt(j)) % Q;//(一个字符一个字符的算 永远是 之前的hash值*进制+当前字符的值)取余一个Q
         }
         return h;
     }
@@ -54,7 +54,7 @@ public class RabinKarp {
     }
 
     private static long longRandomPrime() {
-        BigInteger prime = BigInteger.probablePrime(31, new Random());
+        BigInteger prime = BigInteger.probablePrime(31, new Random());//生成一个大素数
         return prime.longValue();
     }
 
