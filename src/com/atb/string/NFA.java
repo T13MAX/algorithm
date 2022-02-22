@@ -28,17 +28,17 @@ public class NFA {
             if (re[i] == '(' || re[i] == '|') {
                 ops.push(i);
             } else if (re[i] == ')') {
-                int or = ops.pop();
+                int or = ops.pop();//先出栈 在判断
                 if (re[or] == '|') {//是或者 那就是或者的下一位到右括号
-                    lp = ops.pop();//再出一栈 左括号
+                    lp = ops.pop();//再出一栈 左括号 出栈
                     G.addEdge(lp, or + 1);//左括号到或+1
                     G.addEdge(or, i);//或到i
                 } else {
                     lp = or;//没有或 那左括号就是右括号出栈对应左括号
                 }
             }
-            if (i < M - 1 && re[i + 1] == '*') {//* 任意 那就是再指回去
-                G.addEdge(lp, i + 1);
+            if (i < M - 1 && re[i + 1] == '*') {//下一位是* 任意 那就是再指回去
+                G.addEdge(lp, i + 1);//那就i到i+1 和i+1到i 两个顶点互相指
                 G.addEdge(i + 1, lp);
             }
             if (re[i] == '(' || re[i] == '*' || re[i] == ')') {//指向下一位

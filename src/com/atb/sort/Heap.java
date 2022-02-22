@@ -9,7 +9,7 @@ import com.atb.utils.SortUtil;
 public class Heap {
 
     public static void sort(Comparable[] a) {
-        int N = a.length-1;
+        int N = a.length - 1;
         for (int k = N / 2; k >= 1; k--) {
             sink(a, k, N);
         }

@@ -11,8 +11,8 @@ public class Example {
 
     }
 
-    public static void main(String[] args){
-        Integer[] a=SortUtil.createArray();
+    public static void main(String[] args) {
+        Integer[] a = SortUtil.createArray();
         SortUtil.show(a);
         sort(a);
         SortUtil.show(a);
