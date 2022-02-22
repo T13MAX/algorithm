@@ -114,7 +114,7 @@ public class Huffman {
         Node root = buildTrie(freq);
         String[] st = new String[R];
         buildCode(st, root, "");//构造编译表
-        writeTrie(root);//打印单词查找树
+        writeTrie(root);//输出单词查找树
         BinaryStdOut.write(input.length);
         for (int i = 0; i < input.length; i++) {
             String code = st[input[i]];//code就是字符对应的编码
