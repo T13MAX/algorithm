@@ -8,6 +8,8 @@ import java.util.Random;
  * p218有几个排序的总结
  * Array.sort对原始数据类型用三项切分快速排序 对引用数据类型用归并排序
  * Kendall距离
+ *
+ * VisuAlgo, algorithm,Data Structure
  */
 public class SortUtil {
     public static Integer[] createArray(){

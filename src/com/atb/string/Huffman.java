@@ -7,6 +7,7 @@ import com.atb.utils.MinPQ;
 
 /**
  * 霍夫曼压缩
+ * 只有叶子节点放字符 左0右1
  * (没测过)
  *
  * @Author 呆呆
@@ -87,7 +88,7 @@ public class Huffman {
         while (pq.size() > 1) {//取最小的两个组合在一起 从最下面构造一棵树
             Node x = pq.delMin();
             Node y = pq.delMin();
-            Node parent = new Node('\0', x.freq + y.freq, x, y);
+            Node parent = new Node('\0', x.freq + y.freq, x, y);//新建一个俩孩子节点的父节点 没字符 只有俩孩子的权重和
             pq.insert(parent);
         }
         return pq.delMin();//最后只剩下一个 跳出了循环到这 把这个头结点返回

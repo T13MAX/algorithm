@@ -140,7 +140,7 @@ public class RedBlackBinarySearchTree<K extends Comparable, V> {
 
     public Node delete(Node h, K key) {
         if (key.compareTo(h.key) < 0) {
-            if (!isRed(h.left) && !isRed(h.left.left)) h = moveRedLeft(h);
+            if (!isRed(h.left) && !isRed(h.left.left)) h = moveRedLeft(h);//左左都是黑色 是2-节点 要借一个
             h.left = delete(h.left, key);
         } else {
             if (isRed(h.left)) h = rotateRight(h);

@@ -10,12 +10,12 @@ public class Heap {
 
     public static void sort(Comparable[] a) {
         int N = a.length - 1;
-        for (int k = N / 2; k >= 1; k--) {
+        for (int k = N / 2; k >= 1; k--) {//构造堆 让根节点大于左右子节点
             sink(a, k, N);
         }
         while (N > 1) {
-            exch(a, 1, N--);
-            sink(a, 1, N);
+            exch(a, 1, N--);//把最大的放最后
+            sink(a, 1, N);//前N-1个再堆有序
         }
     }
 
@@ -37,9 +37,9 @@ public class Heap {
     }
 
     public static void sink(Comparable[] a, int k, int maxN) {
-        while (2 * k <= maxN) {
+        while (2 * k <= maxN) {//循环 子节点的子节点
             int j = 2 * k;
-            if (j < maxN && less(a, j, j + 1)) j++;
+            if (j < maxN && less(a, j, j + 1)) j++;//找到大的那个
             if (!less(a, k, j)) break;
             exch(a, k, j);
             k = j;

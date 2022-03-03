@@ -24,7 +24,7 @@ public class KMP {
                 dfa[c][j] = dfa[c][x];//复制匹配失败情况下的值
             }
             dfa[pat.charAt(j)][j] = j + 1;//设置匹配成功情况下的值 //正确的字符的对应位置设置为j+1 就是下一个
-            x = dfa[pat.charAt(j)][x];//更新重启状态
+            x = dfa[pat.charAt(j)][x];//更新重启状态  匹配失败 回到的状态就那一个 在那个状态的所有字符的状态都直接复制过来就行了
         }
     }
 
